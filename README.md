@@ -70,6 +70,106 @@ To see detailed information about each subfolder:
 ./folder_inspector_async.py /path/to/folder -v
 ```
 
+### Example Directory Structure
+To test the script, you can create a directory with the following structure:
+```
+test_folder/
+├── file1.txt
+├── file2.txt
+├── empty_folder/
+└── data/
+    ├── file3.txt
+    └── file4.txt
+```
+
+You can create this structure using:
+```bash
+mkdir -p test_folder/empty_folder test_folder/data
+touch test_folder/file1.txt test_folder/file2.txt
+touch test_folder/data/file3.txt test_folder/data/file4.txt
+```
+
+Then run the script:
+```bash
+./folder_inspector.py test_folder
+```
+
+Expected output:
+```
+Direct items in test_folder:
+Total items: 4
+Files: 2
+Directories: 2
+Symbolic links: 0
+
+Analyzing subfolders:
+- Empty subfolder found: empty_folder
+- Subfolder 'data' contains 2 file(s)
+```
+
+## Test Results
+
+### Test Directory Structure
+The test directory (`test_folder`) contains:
+```
+test_folder/
+├── file1.txt
+├── file2.txt
+├── file3.txt
+├── folder1/
+│   ├── file4.txt
+│   └── file5.txt
+├── folder2/
+│   ├── file6.txt
+│   └── file7.txt
+├── folder3/
+│   ├── file8.txt
+│   └── file9.txt
+└── readonly_folder/
+    ├── file10.txt
+    └── file11.txt
+```
+
+### Test Results
+
+#### Basic Version (folder_inspector.py)
+```
+Direct items in test_folder:
+Total items: 7
+Files: 3
+Directories: 4
+Symbolic links: 0
+
+Analyzing subfolders:
+- Subfolder 'folder2' contains 2 file(s)
+- Subfolder 'folder3' contains 2 file(s)
+- Subfolder 'readonly_folder' contains 2 file(s)
+- Subfolder 'folder1' contains 2 file(s)
+```
+
+#### Async Version (folder_inspector_async.py)
+```
+Analyzing directory structure...
+
+Direct items in test_folder:
+Total items: 7
+Files: 3
+Directories: 4
+Symbolic links: 0
+
+Analyzing subfolders:
+- Subfolder 'folder2' contains 2 file(s)
+- Subfolder 'folder3' contains 2 file(s)
+- Subfolder 'readonly_folder' contains 2 file(s)
+- Subfolder 'folder1' contains 2 file(s)
+```
+
+Both versions successfully:
+1. Counted the total number of items in the main folder
+2. Identified all subfolders and their contents
+3. Handled the readonly folder correctly
+4. Provided accurate file counts for each subfolder
+
 ## Version Comparison
 
 | Feature | Basic Version | Async Version |
@@ -79,37 +179,6 @@ To see detailed information about each subfolder:
 | Performance | Good for small directories | Better for large directories |
 | Memory Usage | Standard | Optimized |
 | Installation | No setup required | Requires pip install |
-
-## Example Output
-
-```
-Direct items in target_folder:
-Total items: 4
-Files: 2
-Directories: 2
-Symbolic links: 0
-
-Analyzing subfolders:
-- Empty subfolder found: empty_folder
-- Subfolder 'data' contains 2 file(s)
-```
-
-With verbose mode:
-```
-Direct items in target_folder:
-Total items: 4
-Files: 2
-Directories: 2
-Symbolic links: 0
-
-Analyzing subfolders:
-- Empty subfolder found: empty_folder
-- Subfolder 'data' contains 2 file(s)
-  Details:
-  - Files: 2
-  - Directories: 0
-  - Symbolic links: 0
-```
 
 ## Implementation Details
 
