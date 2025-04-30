@@ -115,19 +115,10 @@ The test directory (`test_folder`) contains:
 test_folder/
 ├── file1.txt
 ├── file2.txt
-├── file3.txt
-├── folder1/
-│   ├── file4.txt
-│   └── file5.txt
-├── folder2/
-│   ├── file6.txt
-│   └── file7.txt
-├── folder3/
-│   ├── file8.txt
-│   └── file9.txt
-└── readonly_folder/
-    ├── file10.txt
-    └── file11.txt
+├── empty_folder/
+└── data_folder/
+    ├── file3.txt
+    └── file4.txt
 ```
 
 ### Test Results
@@ -135,16 +126,14 @@ test_folder/
 #### Basic Version (folder_inspector.py)
 ```
 Direct items in test_folder:
-Total items: 7
-Files: 3
-Directories: 4
+Total items: 4
+Files: 2
+Directories: 2
 Symbolic links: 0
 
 Analyzing subfolders:
-- Subfolder 'folder2' contains 2 file(s)
-- Subfolder 'folder3' contains 2 file(s)
-- Subfolder 'readonly_folder' contains 2 file(s)
-- Subfolder 'folder1' contains 2 file(s)
+- Subfolder 'data_folder' contains 2 file(s)
+- Empty subfolder found: empty_folder
 ```
 
 #### Async Version (folder_inspector_async.py)
@@ -165,10 +154,10 @@ Analyzing subfolders:
 ```
 
 Both versions successfully:
-1. Counted the total number of items in the main folder
-2. Identified all subfolders and their contents
-3. Handled the readonly folder correctly
-4. Provided accurate file counts for each subfolder
+1. Counted the total number of items in the main folder (4 items)
+2. Identified the empty subfolder (empty_folder)
+3. Counted files in the non-empty subfolder (data_folder contains 2 files)
+4. Correctly identified the two text files in the main folder
 
 ## Version Comparison
 
