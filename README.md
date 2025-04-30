@@ -43,19 +43,21 @@ cd folder-summary-tool
 
 2. Install dependencies:
 ```bash
+# For basic version (no additional dependencies required)
+# For async version with progress bar:
 pip install -r requirements.txt
 ```
 
 ## Usage
 
 ### Basic Version
-For small to medium-sized directories:
+For small to medium-sized directories. No additional dependencies required:
 ```bash
 ./folder_inspector.py /path/to/folder
 ```
 
 ### Async Version
-For large directories with better performance:
+For large directories with better performance. Requires additional dependencies (see Installation):
 ```bash
 ./folder_inspector_async.py /path/to/folder
 ```
@@ -67,6 +69,16 @@ To see detailed information about each subfolder:
 # or
 ./folder_inspector_async.py /path/to/folder -v
 ```
+
+## Version Comparison
+
+| Feature | Basic Version | Async Version |
+|---------|--------------|---------------|
+| Dependencies | None | tqdm |
+| Progress Bar | No | Yes |
+| Performance | Good for small directories | Better for large directories |
+| Memory Usage | Standard | Optimized |
+| Installation | No setup required | Requires pip install |
 
 ## Example Output
 
