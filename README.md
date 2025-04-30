@@ -141,16 +141,14 @@ Analyzing subfolders:
 Analyzing directory structure...
 
 Direct items in test_folder:
-Total items: 7
-Files: 3
-Directories: 4
+Total items: 4
+Files: 2
+Directories: 2
 Symbolic links: 0
 
 Analyzing subfolders:
-- Subfolder 'folder2' contains 2 file(s)
-- Subfolder 'folder3' contains 2 file(s)
-- Subfolder 'readonly_folder' contains 2 file(s)
-- Subfolder 'folder1' contains 2 file(s)
+- Subfolder 'data_folder' contains 2 file(s)
+- Empty subfolder found: empty_folder
 ```
 
 Both versions successfully:
